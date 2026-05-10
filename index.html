@@ -60,7 +60,6 @@
         .editorial{font-size:16.8px;line-height:1.85;color:var(--ink2);margin-bottom:4.5rem;padding-left:1.75rem;border-left:1.5px solid var(--accent)}
         .editorial em{font-style:italic;color:var(--ink)}
 
-        /* Films - grille équilibrée */
         .films-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:2.8rem}
         .film-entry{display:flex;flex-direction:column}
         .film-poster-wrap{border-radius:5px;overflow:hidden;display:block;text-decoration:none;background:#18160f;transition:transform .3s,box-shadow .3s;cursor:pointer;position:relative}
@@ -78,7 +77,6 @@
         .poster-play-overlay{position:absolute;bottom:1rem;left:1rem;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:18px;transition:background .2s,transform .2s}
         .film-poster-wrap:hover .poster-play-overlay{background:rgba(255,255,255,0.35);transform:scale(1.08)}
 
-        /* Interlude & Clips */
         .interlude{background:var(--bg2);padding:2.8rem 3.5rem;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
         .interlude p{font-size:16.2px;line-height:1.9;color:var(--ink2)}
 
@@ -87,13 +85,11 @@
         .clip-title{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--ink);margin-bottom:3px}
         .clip-artist{font-size:12.8px;color:var(--ink3)}
 
-        /* À propos */
         .about-body{display:grid;grid-template-columns:3fr 2fr;gap:6rem;align-items:start}
         .about-text p{font-size:16.8px;line-height:1.88;color:var(--ink2)}
         .about-text p+p{margin-top:1.4rem}
         .about-pull{font-family:var(--serif);font-size:22.5px;font-style:italic;line-height:1.45;color:var(--ink);padding-top:1.8rem;border-top:0.5px solid var(--accent)}
 
-        /* Contact */
         .contact-h{font-size:clamp(28px,4.5vw,48px)}
         .contact-sub{font-size:14.2px;color:var(--ink3)}
 
@@ -150,7 +146,6 @@
 <section id="films">
   <div class="wrap">
     <div class="section-label">Films</div>
-    
     <p class="editorial">
       Trois longs métrages sortis en salle. Des films singuliers, souvent réalisés en marge des circuits institutionnels, 
       où je signe le montage — et parfois la réalisation.
@@ -210,7 +205,6 @@
     <!-- Également -->
     <div style="margin-top:4rem;border-top:0.5px solid var(--border);padding-top:2.5rem">
       <p style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem">Également</p>
-      <!-- tes trois lignes restent identiques -->
       <div style="display:flex;flex-direction:column;gap:1.5rem">
         <div style="display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap">
           <span style="font-family:var(--serif);font-size:17px;color:var(--ink)">Du rôti pour Noël</span>
@@ -240,8 +234,6 @@
   <div class="wrap">
     <div class="section-label">Clips &amp; images</div>
     <div class="clips-grid">
-      <!-- tes 3 clips avec les miniatures YouTube -->
-      <!-- (je les ai gardés tels quels mais avec la hauteur harmonisée) -->
       <div class="clip-card" onclick="openLightbox('https://www.youtube.com/embed/y9IEbTvaxdM?autoplay=1')">
         <div class="clip-thumb"><img src="https://img.youtube.com/vi/y9IEbTvaxdM/hqdefault.jpg" alt="Ellectrochoc"><div class="clip-overlay"><div class="clip-play">▶</div></div></div>
         <div class="clip-info">
@@ -250,10 +242,35 @@
           <span class="clip-badge">Réalisation • Tournage • Montage</span>
         </div>
       </div>
-      <!-- idem pour les deux autres (Bout de viande et Tatiana) -->
+      <div class="clip-card" onclick="openLightbox('https://www.youtube.com/embed/8GisaYwGDDo?autoplay=1')">
+        <div class="clip-thumb"><img src="https://img.youtube.com/vi/8GisaYwGDDo/hqdefault.jpg" alt="Bout de viande"><div class="clip-overlay"><div class="clip-play">▶</div></div></div>
+        <div class="clip-info">
+          <p class="clip-title">Bout de viande</p>
+          <p class="clip-artist">Golden Parapluie</p>
+          <span class="clip-badge">Réalisation • Tournage • Montage</span>
+        </div>
+      </div>
+      <div class="clip-card" onclick="openLightbox('https://player.vimeo.com/video/75429526?autoplay=1')">
+        <div class="clip-thumb"><img src="/images/tatiana-mosio-bogonga.jpg" alt="Tatiana Mosio Bogonga"><div class="clip-overlay"><div class="clip-play">▶</div></div></div>
+        <div class="clip-info">
+          <p class="clip-title">Tatiana Mosio Bogonga</p>
+          <p class="clip-artist">Mad In Sauve · 2013</p>
+          <span class="clip-badge">Réalisation • Tournage • Montage</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Alterlive reste inchangé -->
+    <div class="alterlive">
+      <a class="alterlive-thumb" href="https://www.youtube.com/playlist?list=PLjdrdzyGmCBJTofnkuKuWcFIk5g5eQ2zR" target="_blank" rel="noopener">
+        <img src="/images/alterlive.jpg" alt="Alterlive">
+        <div class="alterlive-overlay"><div class="alterlive-play">▶</div></div>
+      </a>
+      <div>
+        <p class="alterlive-label">Webtélé • Depuis 2024</p>
+        <p class="alterlive-title">Alterlive</p>
+        <p class="alterlive-desc">Dans le cadre d’un projet de webtélé que j’ai initié, une série d’alterlive — concerts intimistes filmés, streamés et podcastés — parmi d’autres émissions.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -262,8 +279,10 @@
     <div class="section-label">À propos</div>
     <div class="about-body">
       <div class="about-text">
-        <p>Autodidacte, formé sur le terrain depuis l’enfance et par des études de philosophie et d’épistémologie à l’EHESS, je pratique le montage depuis plus de vingt ans...</p>
-        <!-- tes deux paragraphes restent identiques -->
+        <p>Autodidacte, formé sur le terrain depuis l’enfance et par des études de philosophie et d’épistémologie à l’EHESS, je pratique le montage depuis plus de vingt ans. J’ai participé dans les années 90 aux tournages de jeunes cinéastes de la Fémis et à un collectif d’artistes engagés. Cette expérience du cinéma comme espace collectif reste centrale.</p>
+        <p>Ce qui me définit : une écoute attentive du réalisateur, une maîtrise technique exigeante (DaVinci Resolve), et surtout une vraie sensibilité dans la salle de montage. Je cherche toujours à servir le propos du film tout en y apportant une vision — à trouver dans les rushes ce qui y est, et parfois ce qui s’y cache. La justesse du rythme, la force d’un regard, la puissance d’une association.</p>
+        <p>Installé dans les Cévennes près de Montpellier, je suis disponible partout en France et à l’international.</p>
+        <p>Je nourris en parallèle un projet personnel. Cette page n’est pas le lieu pour en parler.</p>
       </div>
       <div>
         <p class="about-pull">Monter, c’est d’abord comprendre.</p>
