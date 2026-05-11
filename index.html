@@ -47,7 +47,7 @@
     <title>Julien Colin — Monteur</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -59,8 +59,9 @@
             --bg:#f4f1eb;
             --bg2:#ede9e1;
             --ink:#1c1a17;
-            --ink2:#4a4640;
-            --ink3:#9a9690;
+            --ink2:#3a3730;        /* ↑ plus sombre qu'avant (#4a4640) → meilleur contraste */
+            --ink3:#6b6760;        /* ↑ plus sombre qu'avant (#9a9690) → labels lisibles */
+            --ink4:#8a8680;        /* niveau intermédiaire pour micro-métadonnées */
             --accent:#c8a96e;
             --border:rgba(28,26,23,0.12);
             --serif:'Playfair Display',Georgia,serif;
@@ -74,60 +75,114 @@
         nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:1rem 3.5rem;gap:1rem}
         .nav-name{font-family:var(--serif);font-size:17px;font-weight:400;color:var(--ink);white-space:nowrap}
         .nav-tagline {
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  font-weight: 300;
-  margin-left: 1.25rem;
-  padding-left: 1.25rem;
-  border-left: 0.5px solid var(--border);
-  white-space: nowrap;
-}
+          font-family: var(--sans);
+          font-size: 12px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--ink3);       /* ↑ plus lisible */
+          font-weight: 400;         /* ↑ 300→400 */
+          margin-left: 1.25rem;
+          padding-left: 1.25rem;
+          border-left: 0.5px solid var(--border);
+          white-space: nowrap;
+        }
         .nav-right{display:flex;align-items:center;gap:2.5rem}
         .nav-links{display:flex;gap:2rem;list-style:none}
-        .nav-links a{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s}
+        .nav-links a{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;font-weight:400}
         .nav-links a:hover{color:var(--ink)}
-        .nav-cta{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);padding-bottom:1px;white-space:nowrap}
-        /* FIX : burger masqué par défaut, visible uniquement sous 640px */
+        .nav-cta{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);padding-bottom:1px;white-space:nowrap;font-weight:500}
         .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
         .nav-burger span{display:block;width:22px;height:0.5px;background:var(--ink)}
 
         /* ── Hero ── */
         .hero{padding:6rem 3.5rem 5rem;border-bottom:0.5px solid var(--border)}
-        /* FIX : fallback prefers-reduced-motion — éléments restent visibles si animations désactivées */
-        .hero-eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s .1s forwards}
+        .hero-eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s .1s forwards;font-weight:400}
         .hero-eyebrow::after{content:'';display:block;width:32px;height:0.5px;background:var(--accent)}
         .hero-h1{font-family:var(--serif);font-size:clamp(40px,6.5vw,74px);font-weight:400;line-height:1.08;letter-spacing:-0.02em;color:var(--ink);margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .25s forwards}
         .hero-h1 em{font-style:italic;color:var(--accent)}
-        .hero-body{font-size:18.5px;line-height:1.9;color:var(--ink2);max-width:560px;opacity:0;animation:fadeUp .8s .4s forwards}
+        /* hero-body : taille ↑, poids ↑, teinte ↑ */
+        .hero-body{
+          font-size:19.5px;
+          line-height:1.85;
+          color:var(--ink2);
+          font-weight:400;          /* 300→400 */
+          max-width:580px;
+          opacity:0;
+          animation:fadeUp .8s .4s forwards;
+          letter-spacing:0.005em;
+        }
 
         section{border-bottom:0.5px solid var(--border)}
         .wrap{padding:5rem 3.5rem}
 
-        /* section-label : trait limité en largeur */
-        .section-label{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:4rem;display:flex;align-items:center;gap:14px}
+        /* section-label */
+        .section-label{
+          font-size:11.5px;
+          letter-spacing:0.2em;
+          text-transform:uppercase;
+          color:var(--ink3);        /* ↑ plus visible */
+          font-weight:500;          /* ↑ 300→500 */
+          margin-bottom:4rem;
+          display:flex;
+          align-items:center;
+          gap:14px;
+        }
         .section-label::after{content:'';width:100px;max-width:120px;height:0.5px;background:var(--border);flex-shrink:0}
 
-        .editorial{font-size:17.25px;line-height:2;color:var(--ink2);margin-bottom:4.5rem;padding-left:1.75rem;border-left:1.5px solid var(--accent)}
+        /* editorial : teinte ↑, taille ↑, graisse ↑ */
+        .editorial{
+          font-size:18px;           /* 17.25→18 */
+          line-height:2;
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          margin-bottom:4.5rem;
+          padding-left:1.75rem;
+          border-left:1.5px solid var(--accent);
+          letter-spacing:0.01em;
+        }
         .editorial em{font-style:italic;color:var(--ink)}
 
-        /* ── Films — FIX : 3 colonnes pour accueillir les 3 affiches ── */
+        /* ── Films ── */
         .films-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5rem}
         .film-entry{display:flex;flex-direction:column}
-        /* FIX : aspect-ratio de secours si une image ne charge pas */
         .film-poster-wrap{border-radius:5px;overflow:hidden;display:block;text-decoration:none;background:#18160f;transition:transform .3s,box-shadow .3s;cursor:pointer;position:relative;aspect-ratio:2/3}
         .film-poster-wrap:hover{transform:translateY(-5px);box-shadow:0 24px 56px rgba(28,26,23,0.14)}
         .film-poster-wrap img{display:block;width:100%;height:100%;object-fit:cover}
         .film-info{padding:1.5rem 0.25rem 2rem;flex:1}
-        .film-meta{display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;flex-wrap:wrap}
-        .film-year{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3)}
-        .film-badge{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px;color:var(--ink2);border:0.5px solid var(--border)}
-        .film-badge.real{background:var(--bg2);border-color:transparent;color:var(--ink)}
-        .film-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:0.6rem;line-height:1.2}
-        .film-synopsis{font-size:15.5px;line-height:1.8;color:var(--ink2);margin-bottom:0.9rem}
-        .film-link{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--accent);padding-bottom:1px;text-decoration:none;cursor:pointer;display:inline}
+        .film-meta{display:flex;align-items:center;gap:8px;margin-bottom:0.65rem;flex-wrap:wrap}
+
+        /* film-year : teinte ↑, graisse ↑ */
+        .film-year{
+          font-size:12.5px;
+          letter-spacing:0.1em;
+          text-transform:uppercase;
+          color:var(--ink3);        /* ↑ */
+          font-weight:500;          /* 300→500 */
+        }
+        /* film-badge : teinte ↑, taille ↑ */
+        .film-badge{
+          font-size:11.5px;
+          letter-spacing:0.08em;
+          text-transform:uppercase;
+          padding:3px 9px;
+          border-radius:2px;
+          color:var(--ink2);        /* ↑ */
+          border:0.5px solid var(--border);
+          font-weight:400;
+        }
+        .film-badge.real{background:var(--bg2);border-color:transparent;color:var(--ink);font-weight:500}
+        .film-title{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--ink);margin-bottom:0.75rem;line-height:1.2}
+
+        /* film-synopsis : taille ↑, teinte ↑, graisse ↑, interligne ↑ */
+        .film-synopsis{
+          font-size:16px;           /* 15.5→16 */
+          line-height:1.9;          /* 1.8→1.9 */
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          margin-bottom:1rem;
+          letter-spacing:0.01em;
+        }
+        .film-link{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--accent);padding-bottom:1px;text-decoration:none;cursor:pointer;display:inline;font-weight:500}
 
         /* Play button overlay */
         .poster-play-overlay{position:absolute;bottom:1rem;left:1rem;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:18px;transition:background .2s,transform .2s}
@@ -135,7 +190,14 @@
 
         /* ── Interlude ── */
         .interlude{background:var(--bg2);padding:2.5rem 3.5rem;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
-        .interlude p{font-size:17.25px;line-height:1.9;color:var(--ink2)}
+        /* interlude p : taille ↑, teinte ↑, graisse ↑ */
+        .interlude p{
+          font-size:18px;           /* 17.25→18 */
+          line-height:1.9;
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          letter-spacing:0.01em;
+        }
 
         /* ── Clips ── */
         .clips-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
@@ -147,40 +209,103 @@
         .clip-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(28,26,23,0.15);transition:background .2s}
         .clip-card:hover .clip-overlay{background:rgba(28,26,23,0.3)}
         .clip-play{width:50px;height:50px;border-radius:50%;background:white;border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--ink2);font-size:17px}
-        .clip-info{padding:1.1rem 1.25rem 1.25rem}
-        .clip-title{font-family:var(--serif);font-size:17px;font-weight:400;color:var(--ink);margin-bottom:3px}
-        .clip-artist{font-size:12px;color:var(--ink3);margin-bottom:8px}
-        .clip-badge{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px;border:0.5px solid var(--border);color:var(--ink2)}
+        .clip-info{padding:1.25rem 1.25rem 1.35rem}
+        .clip-title{font-family:var(--serif);font-size:17.5px;font-weight:400;color:var(--ink);margin-bottom:5px}
 
-        /* ── Alterlive ── FIX : aspect-ratio sur la vignette pour stabiliser le layout ── */
+        /* clip-artist : teinte ↑, taille ↑, graisse ↑ */
+        .clip-artist{
+          font-size:13px;           /* 12→13 */
+          color:var(--ink3);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          margin-bottom:10px;
+          letter-spacing:0.02em;
+        }
+        /* clip-badge : teinte ↑, taille ↑ */
+        .clip-badge{
+          font-size:11.5px;         /* 11→11.5 */
+          letter-spacing:0.08em;
+          text-transform:uppercase;
+          padding:3px 9px;
+          border-radius:2px;
+          border:0.5px solid var(--border);
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;
+        }
+
+        /* ── Alterlive ── */
         .alterlive{border-top:0.5px solid var(--border);padding-top:2.5rem;display:grid;grid-template-columns:300px 1fr;gap:2.5rem;align-items:center}
         .alterlive-thumb{border-radius:5px;overflow:hidden;display:block;text-decoration:none;position:relative;transition:transform .25s,box-shadow .25s;aspect-ratio:16/9}
         .alterlive-thumb:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(28,26,23,0.1)}
         .alterlive-thumb img{display:block;width:100%;height:100%;object-fit:cover}
         .alterlive-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(28,26,23,0.2)}
         .alterlive-play{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.18);border:0.5px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);font-size:19px}
-        .alterlive-label{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.6rem}
-        .alterlive-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:0.75rem}
-        .alterlive-desc{font-size:16px;line-height:1.9;color:var(--ink2)}
+
+        /* alterlive-label : teinte ↑, graisse ↑ */
+        .alterlive-label{
+          font-size:12px;
+          letter-spacing:0.14em;
+          text-transform:uppercase;
+          color:var(--ink3);        /* ↑ */
+          font-weight:500;          /* 300→500 */
+          margin-bottom:0.65rem;
+        }
+        .alterlive-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:0.85rem}
+
+        /* alterlive-desc : taille ↑, teinte ↑, graisse ↑ */
+        .alterlive-desc{
+          font-size:16.5px;         /* 16→16.5 */
+          line-height:1.9;
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          letter-spacing:0.01em;
+        }
 
         /* ── À propos ── */
         .about-body{display:grid;grid-template-columns:3fr 2fr;gap:6rem;align-items:start}
-        .about-text p{font-size:17.25px;line-height:1.88;color:var(--ink2)}
-        .about-text p+p{margin-top:1.2rem}
+
+        /* about-text : taille ↑, teinte ↑, graisse ↑ */
+        .about-text p{
+          font-size:18px;           /* 17.25→18 */
+          line-height:1.95;         /* 1.88→1.95 */
+          color:var(--ink2);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          letter-spacing:0.01em;
+        }
+        .about-text p+p{margin-top:1.35rem}
         .about-pull{font-family:var(--serif);font-size:21px;font-style:italic;line-height:1.55;color:var(--ink);padding-top:1.5rem;border-top:0.5px solid var(--accent)}
 
-        /* ── Contact ── FIX : suppression du padding-bottom excessif sur .contact-sub ── */
+        /* ── Contact ── */
         .contact-block{padding:5.5rem 3.5rem 3rem;border-bottom:0.5px solid var(--border)}
         .contact-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;margin-bottom:2rem}
         .contact-h{font-family:var(--serif);font-size:clamp(26px,4vw,44px);font-weight:400;line-height:1.15;color:var(--ink)}
         .contact-h em{font-style:italic;color:var(--accent)}
-        .contact-link{font-size:15px;color:var(--ink2);text-decoration:none;border-bottom:0.5px solid var(--border);padding-bottom:3px;transition:color .2s,border-color .2s}
+        .contact-link{font-size:15.5px;color:var(--ink2);text-decoration:none;border-bottom:0.5px solid rgba(58,55,48,0.35);padding-bottom:3px;transition:color .2s,border-color .2s;font-weight:400}
         .contact-link:hover{color:var(--ink);border-color:var(--ink)}
-        /* FIX : padding-bottom retiré (s'ajoutait au padding du parent) */
-        .contact-sub{font-size:15px;color:var(--ink3)}
 
-        /* ── Footer ── FIX : border-top ajouté + centrage en cas de wrap ── */
-        footer{padding:1.5rem 3.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);border-top:0.5px solid var(--border)}
+        /* contact-sub : taille ↑, teinte ↑, graisse ↑ */
+        .contact-sub{
+          font-size:15.5px;         /* 15→15.5 */
+          color:var(--ink3);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          line-height:1.7;
+          letter-spacing:0.01em;
+        }
+
+        /* ── Footer ── */
+        footer{
+          padding:1.5rem 3.5rem;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          flex-wrap:wrap;
+          gap:1rem;
+          font-size:12px;
+          letter-spacing:0.12em;
+          text-transform:uppercase;
+          color:var(--ink3);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          border-top:0.5px solid var(--border);
+        }
 
         /* ── Lightbox ── */
         .lightbox{display:none;position:fixed;inset:0;background:rgba(15,13,10,0.94);z-index:500;align-items:center;justify-content:center;padding:2rem}
@@ -197,9 +322,37 @@
         .nav-overlay a:nth-child(1){animation-delay:.05s}.nav-overlay a:nth-child(2){animation-delay:.1s}.nav-overlay a:nth-child(3){animation-delay:.15s}.nav-overlay a:nth-child(4){animation-delay:.2s}.nav-overlay a:nth-child(5){animation-delay:.25s}
         .nav-overlay-close{position:absolute;top:1.25rem;right:1.5rem;font-size:22px;color:var(--ink3);cursor:pointer;background:none;border:none}
 
+        /* ── "Également" section ── */
+        .also-label{
+          font-size:11.5px;
+          letter-spacing:0.2em;
+          text-transform:uppercase;
+          color:var(--ink3);        /* ↑ */
+          font-weight:500;          /* 300→500 */
+          margin-bottom:2rem;
+        }
+        .also-film-title{
+          font-family:var(--serif);
+          font-size:17px;
+          color:var(--ink);
+        }
+        /* also-meta : teinte ↑, taille ↑, graisse ↑ */
+        .also-meta{
+          font-size:13px;           /* 12→13 */
+          color:var(--ink3);        /* ↑ */
+          font-weight:400;          /* 300→400 */
+          letter-spacing:0.02em;
+        }
+        /* also-note : teinte ↑, graisse légère */
+        .also-note{
+          font-size:12px;
+          color:var(--ink4);        /* intermédiaire */
+          font-style:italic;
+          font-weight:400;
+        }
+
         @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
-        /* FIX : prefers-reduced-motion — éléments hero toujours visibles */
         @media(prefers-reduced-motion:reduce){
           .hero-eyebrow,.hero-h1,.hero-body{opacity:1;animation:none}
         }
@@ -207,7 +360,6 @@
         /* ── Responsive 900px ── */
         @media(max-width:900px){
           nav,.hero,.wrap,.interlude,.contact-block{padding-left:1.5rem;padding-right:1.5rem}
-          /* FIX : films-grid passe à 2 colonnes (puis 1 à 640px) */
           .films-grid{grid-template-columns:1fr 1fr}
           .clips-grid{grid-template-columns:1fr}
           .about-body{grid-template-columns:1fr;gap:2.5rem}
@@ -216,11 +368,9 @@
 
         /* ── Responsive 640px ── */
         @media(max-width:640px){
-          /* FIX : nav-links et nav-cta masqués, burger visible */
           .nav-links,.nav-cta{display:none}
           .nav-burger{display:flex}
-          /* FIX : films-grid 1 colonne sur mobile */
-          .nav-tagline { display: none; }
+          .nav-tagline{display:none}
           .films-grid{grid-template-columns:1fr}
           footer{padding:1.25rem 1.5rem;justify-content:center}
         }
@@ -253,7 +403,6 @@
       <li><a href="#films">Films</a></li>
       <li><a href="#clips">Clips</a></li>
       <li><a href="#about">À propos</a></li>
-      <!-- FIX : lien Contact ajouté dans la nav desktop (absent de l'original) -->
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#" class="nav-cta rot13-link" data-r="pbyvabfpbcr@cebgbaznvy.pbz">Me contacter</a>
@@ -277,7 +426,6 @@
       où je signe le montage — et parfois la réalisation.
     </p>
 
-    <!-- FIX : grille à 3 colonnes pour accueillir les 3 films sans case vide -->
     <div class="films-grid">
 
       <!-- 1. Le silence des nanos -->
@@ -333,25 +481,25 @@
 
     <!-- Autres films -->
     <div style="margin-top:3.5rem;border-top:0.5px solid var(--border);padding-top:2.5rem">
-      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2rem">Également</p>
+      <p class="also-label">Également</p>
 
-      <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div style="display:flex;flex-direction:column;gap:1.75rem">
 
         <div style="display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap">
-          <span style="font-family:var(--serif);font-size:17px;color:var(--ink)">Du rôti pour Noël</span>
-          <span style="font-size:12px;color:var(--ink3)">Court-métrage de Sabri Tida · 2017 · Montage</span>
-          <span style="font-size:11px;color:var(--ink3);font-style:italic">Non disponible en ligne</span>
+          <span class="also-film-title">Du rôti pour Noël</span>
+          <span class="also-meta">Court-métrage de Sabri Tida · 2017 · Montage</span>
+          <span class="also-note">Non disponible en ligne</span>
         </div>
 
         <div style="display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap">
           <span style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ink)">Excister</span>
-          <span style="font-size:12px;color:var(--ink3)">Documentaire de Mathilde Jauvin · 2024 · Co-Montage</span>
+          <span class="also-meta">Documentaire de Mathilde Jauvin · 2024 · Co-Montage</span>
           <a href="https://www.shortfilmwire.com/fr/film/200140472/ExCisTer" target="_blank" rel="noopener" class="film-link">Voir la fiche &rarr;</a>
         </div>
 
         <div style="display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap">
           <span style="font-family:var(--serif);font-size:17px;color:var(--ink)">Tarnac : montage/démontage</span>
-          <span style="font-size:12px;color:var(--ink3)">2009 · Réalisation + Montage</span>
+          <span class="also-meta">2009 · Réalisation + Montage</span>
           <span onclick="openLightbox('https://player.vimeo.com/video/612483075?autoplay=1')" class="film-link" style="cursor:pointer">Voir sur Vimeo &rarr;</span>
         </div>
 
@@ -375,7 +523,7 @@
         </div>
         <div class="clip-info">
           <p class="clip-title">Ellectrochoc</p>
-          <p class="clip-artist">Don Julio - 2018</p>
+          <p class="clip-artist">Don Julio · 2018</p>
           <span class="clip-badge">Réalisation • Tournage • Montage</span>
         </div>
       </div>
@@ -387,7 +535,7 @@
         </div>
         <div class="clip-info">
           <p class="clip-title">Bout de viande</p>
-          <p class="clip-artist">Golden Parapluie - 2014</p>
+          <p class="clip-artist">Golden Parapluie · 2014</p>
           <span class="clip-badge">Réalisation • Tournage • Montage</span>
         </div>
       </div>
@@ -405,7 +553,6 @@
       </div>
     </div>
 
-    <!-- FIX : image alterlive avec aspect-ratio pour stabiliser le layout 2 colonnes -->
     <div class="alterlive">
       <a class="alterlive-thumb" href="https://www.youtube.com/playlist?list=PLjdrdzyGmCBJTofnkuKuWcFIk5g5eQ2zR" target="_blank" rel="noopener">
         <img src="/images/alterlive.jpg" alt="Alterlive">
@@ -431,8 +578,7 @@
         <p>Je nourris en parallèle un projet personnel. Cette page n'est pas le lieu pour en parler.</p>
       </div>
       <div>
-        <p class="about-pull">Un monteur qui entre dans un film comme on entre dans une pensée.
-.</p>
+        <p class="about-pull">Un monteur qui entre dans un film comme on entre dans une pensée.</p>
       </div>
     </div>
   </div>
@@ -448,7 +594,6 @@
   </div>
 </section>
 
-<!-- FIX : border-top ajouté via CSS, footer séparé proprement de la section contact -->
 <footer>
   <span>Julien Colin — Monteur</span>
   <span>Cévennes / Montpellier</span>
@@ -476,7 +621,6 @@ document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('.rot13-link').forEach(function(el){
     var decoded = rot13(el.dataset.r);
     el.href = 'mailto:' + decoded;
-    // Si le texte visible est l'adresse encodée, on le décode aussi
     if(el.textContent.trim() === el.dataset.r + ' →'){
       el.textContent = decoded + ' →';
     }
