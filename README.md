@@ -22,7 +22,7 @@ Trois longs métrages sortis en salle.
 
 ## Contact
 
-- Email : [contact@julien-colin.fr](mailto:contact@julien-colin.fr)
+- Email : [colinoscope@protonmail.com](mailto:colinoscope@protonmail.com)
 - Site : [julien-colin.fr](https://julien-colin.fr)
 
 ---
