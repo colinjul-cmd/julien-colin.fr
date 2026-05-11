@@ -6,12 +6,43 @@
     <meta name="description" content="Julien Colin — Monteur. Documentaires de création, fictions singulières et formes expérimentales. Trois longs métrages sortis en salle.">
     <meta name="keywords" content="monteur, montage vidéo, documentaire, fiction, DaVinci Resolve, Cévennes, Montpellier">
     
+    <!-- SEO -->
+    <meta name="author" content="Julien Colin">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://julien-colin.fr">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Julien Colin — Monteur">
     <meta property="og:description" content="Je donne forme et sens aux films qui ont quelque chose à dire.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://julien-colin.fr">
     <meta property="og:image" content="https://julien-colin.fr/images/hero-og.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Julien Colin — Monteur">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Julien Colin — Monteur">
+    <meta name="twitter:description" content="Je donne forme et sens aux films qui ont quelque chose à dire.">
+    <meta name="twitter:image" content="https://julien-colin.fr/images/hero-og.jpg">
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Julien Colin",
+      "jobTitle": "Monteur de films",
+      "url": "https://julien-colin.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cévennes",
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+      },
+      "knowsAbout": ["Montage cinématographique", "Documentaire de création", "Fiction expérimentale", "DaVinci Resolve", "Final Cut Pro"]
+    }
+    </script>
 
     <title>Julien Colin — Monteur</title>
 
@@ -20,6 +51,8 @@
     
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#f4f1eb">
 
     <style>
         :root{
@@ -201,7 +234,6 @@
   <a href="#clips" onclick="closeNav()">Clips</a>
   <a href="#about" onclick="closeNav()">À propos</a>
   <a href="#contact" onclick="closeNav()">Contact</a>
-  <a href="mailto:contact@julien-colin.fr" onclick="closeNav()">contact@julien-colin.fr</a>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -224,7 +256,7 @@
       <!-- FIX : lien Contact ajouté dans la nav desktop (absent de l'original) -->
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:colinoscope@protonmail.com" class="nav-cta">Me contacter</a>
+    <a href="#" class="nav-cta rot13-link" data-r="pbyvabfpbcr@cebgbaznvy.pbz">Me contacter</a>
   </div>
   <button class="nav-burger" onclick="openNav()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -410,7 +442,7 @@
   <div class="contact-block">
     <div class="contact-inner">
       <p class="contact-h">Parlons de<br><em>votre projet.</em></p>
-      <a href="mailto:colinoscope@protonmail.com" class="contact-link">colinoscope@protonmail.com →</a>
+      <a href="#" class="contact-link rot13-link" data-r="pbyvabfpbcr@cebgbaznvy.pbz">pbyvabfpbcr@cebgbaznvy.pbz →</a>
     </div>
     <p class="contact-sub">Disponible pour des missions de montage dès maintenant — collaboration à distance possible.</p>
   </div>
@@ -430,6 +462,26 @@ function openLightbox(src){document.getElementById('lbFrame').src=src;document.g
 function closeLightbox(){document.getElementById('lbFrame').src='';document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeNav()}})
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox()})
+</script>
+<script>
+// ── ROT13 email obfuscation ──
+function rot13(s){
+  return s.replace(/[a-zA-Z]/g,function(c){
+    return String.fromCharCode(
+      (c<='Z'?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26
+    );
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.rot13-link').forEach(function(el){
+    var decoded = rot13(el.dataset.r);
+    el.href = 'mailto:' + decoded;
+    // Si le texte visible est l'adresse encodée, on le décode aussi
+    if(el.textContent.trim() === el.dataset.r + ' →'){
+      el.textContent = decoded + ' →';
+    }
+  });
+});
 </script>
 </body>
 </html>
